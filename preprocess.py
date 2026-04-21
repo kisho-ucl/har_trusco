@@ -82,9 +82,10 @@ def read_files(ID, Year, Date, hour, unlabeled=False):
 # IMU 抽出（linacc + gyro）
 # ------------------------------------
 def extract_imu_data(val):
-    linacc = val[:, 0:3] - val[:, 3:6]
+    #linacc = val[:, 0:3] - val[:, 3:6] #change
+    acc = val[:, 0:3]
     gyro   = val[:, 6:9]
-    imu_data = np.hstack([linacc, gyro])   # shape = (N, 6)
+    imu_data = np.hstack([acc, gyro])   # shape = (N, 6)
     return imu_data
 
 
